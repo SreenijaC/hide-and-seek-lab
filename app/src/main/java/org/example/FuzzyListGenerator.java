@@ -14,7 +14,7 @@ public class FuzzyListGenerator {
     this.iterations = iterations;
   }
 
-  // original methods returning Fuzzy only (for your old tests)
+  // original methods returning Fuzzy only
   public ArrayList<Fuzzy> randomizedRainbowFuzzies() {
     ArrayList<Fuzzy> fuzzies = new ArrayList<>();
     for (int i = 0; i < this.iterations; i++) {
@@ -49,7 +49,7 @@ public class FuzzyListGenerator {
     return fuzzies;
   }
 
-  // new methods returning Feeling list with pricklies (for add-ons)
+  // new methods returning Feeling list with pricklies for add-ons
   public ArrayList<Feeling> randomizedRainbowFeelings() {
     ArrayList<Feeling> feelings = new ArrayList<>();
     for (int i = 0; i < this.iterations; i++) {
