@@ -1,0 +1,42 @@
+package org.example;
+
+import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class FuzzyFinderLinearSearchTest {
+
+    FuzzyFinder finder = new FuzzyFinder();
+    FuzzyListGenerator generator = new FuzzyListGenerator();
+
+    @Test
+    void linearSearchFindsGoldInLargeSortedList() {
+        ArrayList<Fuzzy> sorted = generator.sortedRainbowFuzzies();
+        int index = finder.linearSearch(sorted);
+        assertTrue(index >= 0);
+        assertEquals("gold", sorted.get(index).color);
+    }
+
+    @Test
+    void linearSearchFindsGoldInLargeRandomList() {
+        ArrayList<Fuzzy> random = generator.randomizedRainbowFuzzies();
+        int index = finder.linearSearch(random);
+        assertTrue(index >= 0);
+        assertEquals("gold", random.get(index).color);
+    }
+
+    @Test
+    void linearSearchReturnsMinusOneWhenNoGold() {
+        ArrayList<Fuzzy> noGold = new ArrayList<>();
+        noGold.add(new Fuzzy("red"));
+        noGold.add(new Fuzzy("orange"));
+        noGold.add(new Fuzzy("blue"));
+        assertEquals(-1, finder.linearSearch(noGold));
+    }
+
+    @Test
+    void linearSearchReturnsMinusOneWhenEmpty() {
+        ArrayList<Fuzzy> empty = new ArrayList<>();
+        assertEquals(-1, finder.linearSearch(empty));
+    }
+}
